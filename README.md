@@ -45,12 +45,12 @@ http://localhost:8080/
 ## Run with command line
 Backend can be run using below commands:
 ```bash
+export $(cat .env)
 cd backend
 python3 -m venv venv
 . venv/bin/activate
 pip install --upgrade pip wheel
 pip install -r requirements.txt
-export $(cat .env)
 ./manage.py migrate
 ./manage.py collectstatic
 ./manage.py runserver
