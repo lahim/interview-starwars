@@ -54,6 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+}
+
 ROOT_URLCONF = 'starwars.urls'
 
 TEMPLATES = [
