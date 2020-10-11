@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-python ./manage.py collectstatic
+python ./manage.py collectstatic --noinput
 
-#gunicorn starwars.asgi:application -k uvicorn.workers.UvicornWorker
 uvicorn starwars.asgi:application --host 0.0.0.0 --reload

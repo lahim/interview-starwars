@@ -13,6 +13,9 @@
 
       <div v-else>
         <b-button v-on:click="fetchData()">Fetch data</b-button>
+        <div class="alerts">
+          <b-alert show dismissible v-if="message">{{ message }}</b-alert>
+        </div>
         <div
             v-for="character in characters"
             :key="character.id"
@@ -41,7 +44,8 @@ export default {
     return {
       characters: null,
       loading: true,
-      errored: false
+      errored: false,
+      message: null
     }
   },
   mounted() {
@@ -62,13 +66,16 @@ export default {
           .finally(() => this.loading = false)
     },
     fetchData() {
+      this.message = 'Fetching data...'
       axios.get('http://localhost:8000/api/fetch-data/') // should be a POST method
           .then(response => {
             console.log(response.data)
+            this.message = 'Data was loaded successfully.'
             this.loadCharacters()
           })
           .catch(error => {
             console.error(error)
+            this.message = 'Oops! Something went wrong.'
           })
     }
   }
@@ -85,6 +92,9 @@ h1 {
   color: $blue-color;
 }
 
+.alerts {
+  padding: 30px 30px;
+}
 .character {
   font-weight: bolder;
   text-align: left;

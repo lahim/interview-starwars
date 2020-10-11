@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -123,11 +124,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = './dist/media'
 MEDIA_URL = '/media/'
 
-SWAPI_URL = 'http://localhost:5000/api/'
-
 MOVIE_CHARACTER_FILE_UPLOAD_DIR = Path(MEDIA_ROOT) / 'characters'
 MOVIE_PLANETS_FILE_UPLOAD_DIR = Path(MEDIA_ROOT) / 'planets'
 
 MOVIE_CHARACTER_URL = MEDIA_URL + 'characters/'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+SWAPI_URL = os.environ['SWAPI_URL']

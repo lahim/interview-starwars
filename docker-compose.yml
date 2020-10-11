@@ -5,6 +5,8 @@ services:
     image: starwars_backend
     environment:
       - PYTHONUNBUFFERED=1
+    env_file:
+      - backend/.env
     build:
       context: ./backend
       dockerfile: Dockerfile
