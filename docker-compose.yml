@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    image: starwars_backend
+    environment:
+      - PYTHONUNBUFFERED=1
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /app/backend
+    ports:
+      - "8000:8000"
+    command: [ "sh", "run.sh" ]
+    restart: on-failure
+
+  frontend:
+    image: starwars_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /app/frontend
+    ports:
+      - "8080:8080"
+    command: [ "sh", "run.sh" ]
+    restart: on-failure
