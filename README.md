@@ -17,6 +17,12 @@ Create your `.env` file using below command:
 ```bash
 echo "SWAPI_URL=http://<YOUR_UNIQUE_INSTANCE_ID>.ngrok.io/api/" > .env
 ```
+SWAPI instance can be hosted from your local machine. Please use this project from GitHub: https://github.com/lahim/interview-swapi
+and follow by instructions.
+SWAPI should be covered by the Ngrok (https://ngrok.com/docs) using below command:
+```bash
+ngrok http 5000
+```
 
 # How to run it?
 You can run in using Docker or your command line.
